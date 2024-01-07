@@ -30,7 +30,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     /**
-     * Returns list of all tasks where isComplete is TRUE (task is completed)
+     * Returns list of all tasks where isComplete is TRUE (task is marked as 'complete')
      * usage: find every task that has been completed
      *
      * @return List of every Task element in db where completion status is TRUE
