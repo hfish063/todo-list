@@ -3,10 +3,7 @@ package dev.hfish.todolist.controller;
 import dev.hfish.todolist.entity.Task;
 import dev.hfish.todolist.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,9 +22,26 @@ public class TaskController {
         return taskService.findAll();
     }
 
+    @GetMapping("/all/complete")
+    public List<Task> findAllCompleted() {
+        return taskService.findAllByCompletion();
+    }
+
+    @GetMapping("/task/{theId}")
+    public Task findTask(@PathVariable("theId") Long theId) {
+        return taskService.findById(theId);
+    }
+
     @PostMapping("/task")
     public Task save(Task theTask) {
-        theTask = new Task("0", "Homework", false);
+        // object assignment reserved for testing purposes - to be removed in future
+        theTask = new Task("Walk the dogs", "UUID", false);
+
         return taskService.save(theTask);
+    }
+
+    @DeleteMapping("/task/{theId}")
+    public void delete(@PathVariable("theId") Long theId) {
+        taskService.deleteById(theId);
     }
 }
