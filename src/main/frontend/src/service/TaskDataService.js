@@ -8,6 +8,11 @@ class TaskDataService {
         return axios.get(`${TASK_API_URL}/all`);
     }
 
+    retrieveAllCompleteTasks() {
+        console.log("Request sent...")
+        return axios.get(`${TASK_API_URL}/all/complete`);
+    }
+
     deleteTask(id) {
         console.log("Executed 'deleteTask' service")
         return axios.delete(`${TASK_API_URL}/task/${id}`);
