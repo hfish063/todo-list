@@ -38,6 +38,11 @@ public class TaskController {
         return taskService.save(theTask);
     }
 
+    @PutMapping("/task/complete")
+    public Task completeTask(@RequestBody Task theTask) {
+        return taskService.save(theTask);
+    }
+
     @DeleteMapping("/task/{theId}")
     public void delete(@PathVariable("theId") Long theId) {
         taskService.deleteById(theId);

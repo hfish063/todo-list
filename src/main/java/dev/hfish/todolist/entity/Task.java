@@ -16,16 +16,6 @@ public class Task {
     @Column(name = "is_complete")
     private boolean isComplete;
 
-    public Task() {
-
-    }
-
-    public Task(String userId, String name, boolean isComplete) {
-        this.userId = userId;
-        this.name = name;
-        this.isComplete = isComplete;
-    }
-
     public Long getId() {
         return id;
     }
@@ -52,9 +42,5 @@ public class Task {
 
     public boolean isComplete() {
         return isComplete;
-    }
-
-    public void setComplete(boolean complete) {
-        isComplete = complete;
     }
 }
