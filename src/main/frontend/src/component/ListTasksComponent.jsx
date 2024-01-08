@@ -16,6 +16,7 @@ class ListTasksComponent extends Component {
         this.refreshTasks = this.refreshTasks.bind(this)
         this.deleteTaskClicked = this.deleteTaskClicked.bind(this)
         this.showCompletedTasksClicked = this.showCompletedTasksClicked.bind(this)
+        this.deleteCompleteTasksClicked = this.deleteCompleteTasksClicked.bind(this)
     }
 
     componentDidMount() {
@@ -43,10 +44,25 @@ class ListTasksComponent extends Component {
             )
     }
 
+    // TODO: method implementation
+    checkBoxClicked(id) {
+        // Change completion status of task with corresponding id
+    }
+
     deleteTaskClicked(id) {
         TaskDataService.deleteTask(id)
             .then(
                 response => {
+                    this.refreshTasks()
+                }
+            )
+    }
+
+    deleteCompleteTasksClicked() {
+        TaskDataService.deleteAllCompleteTasks()
+            .then(
+                response => {
+                    console.log(response);
                     this.refreshTasks()
                 }
             )
@@ -88,7 +104,10 @@ class ListTasksComponent extends Component {
                         </tbody>
                     </table>
                     <hr></hr>
-                    <button className="btn btn-link" onClick={this.refreshTasks}>All Tasks</button>
+                    <div className="button-flex">
+                        <button className="btn btn-danger" onClick={this.deleteCompleteTasksClicked}>Clear Complete Tasks</button>
+                        <button className="btn btn-link" onClick={this.refreshTasks}>All Tasks</button>
+                    </div>
                 </div>
             </div>
         )

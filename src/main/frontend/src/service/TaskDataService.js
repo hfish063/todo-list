@@ -23,6 +23,11 @@ class TaskDataService {
         console.log("Executed 'deleteTask' service")
         return axios.delete(`${TASK_API_URL}/task/${id}`);
     }
+
+    deleteAllCompleteTasks() {
+        console.log("Executed 'deleteAllCompleteTasks' service")
+        return axios.delete(`${TASK_API_URL}/all/complete`);
+    }
 }
 
 export default new TaskDataService()
