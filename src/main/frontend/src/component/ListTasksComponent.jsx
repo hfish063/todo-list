@@ -29,6 +29,7 @@ class ListTasksComponent extends Component {
             .then(
                 response => {
                     console.log(response);
+                    response.data.sort((a, b) => a.id - b.id)
                     this.setState({tasks: response.data})
                 }
             )
@@ -45,8 +46,21 @@ class ListTasksComponent extends Component {
     }
 
     // TODO: method implementation
-    checkBoxClicked(id) {
-        // Change completion status of task with corresponding id
+    checkBoxClicked(id, name, isComplete) {
+        let task = JSON.stringify ({
+            id: id,
+            userId: "UUID",
+            name: name,
+            complete: !isComplete
+        });
+
+        TaskDataService.updateTask(task)
+            .then(
+                response => {
+                    this.refreshTasks()
+                }
+            )
+        console.log(task);
     }
 
     deleteTaskClicked(id) {
@@ -82,7 +96,7 @@ class ListTasksComponent extends Component {
                     <table className="table table-striped table-dark">
                         <thead>
                             <tr>
-                                <th>Id</th>
+                                <th>Status</th>
                                 <th>Name</th>
                                 <th>Completion Status</th>
                                 <th>Action</th>
@@ -93,9 +107,10 @@ class ListTasksComponent extends Component {
                                 this.state.tasks.map(
                                     task =>
                                         <tr key={task.id}>
-                                            <td>{task.id}</td>
+                                            <td>
+                                                <input className="check-large" onClick={() => this.checkBoxClicked(task.id, task.name, task.complete)} type="checkbox" name="complete" />
+                                            </td>
                                             <td>{task.name}</td>
-                                            {/* <td>{String(task.complete).toUpperCase()} <input type="checkbox" name="Complete" /></td> */}
                                             <td>{String(task.complete).toUpperCase()}</td>
                                             <td><button className="btn btn-warning" onClick={() => this.deleteTaskClicked(task.id)}>❌</button></td>
                                         </tr>
