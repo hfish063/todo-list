@@ -79,8 +79,9 @@ class ListTasksComponent extends Component {
                                         <tr key={task.id}>
                                             <td>{task.id}</td>
                                             <td>{task.name}</td>
+                                            {/* <td>{String(task.complete).toUpperCase()} <input type="checkbox" name="Complete" /></td> */}
                                             <td>{String(task.complete).toUpperCase()}</td>
-                                            <td><button className="btn btn-warning" onClick={() => this.deleteTaskClicked(task.id)}>Delete</button></td>
+                                            <td><button className="btn btn-warning" onClick={() => this.deleteTaskClicked(task.id)}>❌</button></td>
                                         </tr>
                                 )
                             }
