@@ -28,6 +28,11 @@ class TaskComponent extends Component {
         console.log(values)
     }
 
+    // TODO: validate method implementation
+    validate(task) {
+        // task name can not exceed 60 characters in length
+    }
+
     render() {
         return (
             <div>
