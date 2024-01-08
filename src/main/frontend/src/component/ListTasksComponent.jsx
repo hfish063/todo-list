@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import TaskDataService from "../service/TaskDataService";
 import axios from "axios";
 import { Form } from "formik";
+import { Link } from "react-router-dom";
+import TaskComponent from "./TaskComponent";
 
 const TITLE = "TodoList App";
 
@@ -53,9 +55,11 @@ class ListTasksComponent extends Component {
     render() {
         return (
             <div className="container">
+                <h1>To-Do List</h1>
+                <hr></hr>
                 <div className="container">
                     <div className="buttons-flex">
-                        <button className="btn btn-success" onClick={this.addCourseClicked}>Add</button>
+                        <TaskComponent />
                         <button className="btn btn-primary" onClick={this.showCompletedTasksClicked}>Show Completed</button>
                     </div>
                     <br></br>

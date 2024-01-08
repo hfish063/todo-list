@@ -13,6 +13,12 @@ class TaskDataService {
         return axios.get(`${TASK_API_URL}/all/complete`);
     }
 
+    createTask(task) {
+        console.log("Sending POST request for task creation...")
+        console.log("POST request data - " + task)
+        return axios.post(`${TASK_API_URL}/task`, task, {headers:{"Content-Type": "application/json"}});
+    }
+
     deleteTask(id) {
         console.log("Executed 'deleteTask' service")
         return axios.delete(`${TASK_API_URL}/task/${id}`);

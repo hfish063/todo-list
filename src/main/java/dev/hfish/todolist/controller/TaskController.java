@@ -34,10 +34,7 @@ public class TaskController {
     }
 
     @PostMapping("/task")
-    public Task save(Task theTask) {
-        // object assignment reserved for testing purposes - to be removed in future
-        theTask = new Task("UUID", "Walk the dogs", false);
-
+    public Task save(@RequestBody Task theTask) {
         return taskService.save(theTask);
     }
 
