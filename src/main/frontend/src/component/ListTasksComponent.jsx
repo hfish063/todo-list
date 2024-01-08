@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import TaskDataService from "../service/TaskDataService";
 import axios from "axios";
+import { Form } from "formik";
+
+const TITLE = "TodoList App";
 
 class ListTasksComponent extends Component {
     constructor(props) {
@@ -10,14 +13,26 @@ class ListTasksComponent extends Component {
         }
         this.refreshTasks = this.refreshTasks.bind(this)
         this.deleteTaskClicked = this.deleteTaskClicked.bind(this)
+        this.showCompletedTasksClicked = this.showCompletedTasksClicked.bind(this)
     }
 
     componentDidMount() {
+        document.title = TITLE;
         this.refreshTasks();
     }
 
     refreshTasks() {
        TaskDataService.retrieveAllTasks()
+            .then(
+                response => {
+                    console.log(response);
+                    this.setState({tasks: response.data})
+                }
+            )
+    }
+
+    showCompletedTasksClicked() {
+        TaskDataService.retrieveAllCompleteTasks()
             .then(
                 response => {
                     console.log(response);
@@ -39,8 +54,10 @@ class ListTasksComponent extends Component {
         return (
             <div className="container">
                 <div className="container">
-                    <button className="btn btn-success" onClick={this.addCourseClicked}>Add</button>
-                    <br></br>
+                    <div className="buttons-flex">
+                        <button className="btn btn-success" onClick={this.addCourseClicked}>Add</button>
+                        <button className="btn btn-primary" onClick={this.showCompletedTasksClicked}>Show Completed</button>
+                    </div>
                     <br></br>
                     <table className="table">
                         <thead>
@@ -63,11 +80,6 @@ class ListTasksComponent extends Component {
                                         </tr>
                                 )
                             }
-                            {/* <tr>
-                                <td>Null</td>
-                                <td>Null</td>
-                                <td>Null</td>
-                            </tr> */}
                         </tbody>
                     </table>
                 </div>
