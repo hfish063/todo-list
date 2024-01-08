@@ -13,10 +13,21 @@ class TaskDataService {
         return axios.get(`${TASK_API_URL}/all/complete`);
     }
 
+    retrieveTask(id) {
+        console.log("Sending GET request for specific task retrieval")
+        return axios.get(`${TASK_API_URL}/task/${id}`)
+    }
+
     createTask(task) {
         console.log("Sending POST request for task creation...")
         console.log("POST request data - " + task)
         return axios.post(`${TASK_API_URL}/task`, task, {headers:{"Content-Type": "application/json"}});
+    }
+
+    updateTask(task) {
+        console.log("Sending PUT request for task update...")
+        console.log("PUT request data - " + task)
+        return axios.put(`${TASK_API_URL}/task/complete`, task, {headers:{"Content-Type": "application/json"}});
     }
 
     deleteTask(id) {
