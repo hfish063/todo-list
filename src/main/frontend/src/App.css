@@ -67,6 +67,11 @@ label {
   justify-content: space-between;
 }
 
+.check-large {
+  width: 30px;
+  height: 30px;
+}
+
 .transparent {
   background-color: transparent;
 }
