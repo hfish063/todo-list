@@ -86,6 +86,8 @@ class ListTasksComponent extends Component {
                             }
                         </tbody>
                     </table>
+                    <hr></hr>
+                    <button className="btn btn-link" onClick={this.refreshTasks}>All Tasks</button>
                 </div>
             </div>
         )
