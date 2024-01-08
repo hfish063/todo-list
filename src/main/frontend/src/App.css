@@ -39,10 +39,22 @@
   }
 }
 
+body {
+  background-color: #282c34;
+}
+
+h1 {
+  color: white
+}
+
 .buttons-flex {
   display: -webkit-flex;
   display: flex;
   -webkit-justify-content: space-between;
   justify-content: space-between;
+}
+
+.transparent {
+  background-color: transparent;
 }
 

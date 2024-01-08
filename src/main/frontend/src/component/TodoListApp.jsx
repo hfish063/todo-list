@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import ListTasksComponent from "./ListTasksComponent";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import TaskComponent from "./TaskComponent";
 
 class TodoListApp extends Component {
     render() {
@@ -21,6 +22,7 @@ class TodoListApp extends Component {
                 <Routes>
                     <Route path="/" element={<ListTasksComponent />} />
                     <Route path="/home" element={<ListTasksComponent />} />
+                    <Route path="/task" element={<TaskComponent />} />
                 </Routes>
             </BrowserRouter>
 

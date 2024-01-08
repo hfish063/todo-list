@@ -59,7 +59,7 @@ class ListTasksComponent extends Component {
                         <button className="btn btn-primary" onClick={this.showCompletedTasksClicked}>Show Completed</button>
                     </div>
                     <br></br>
-                    <table className="table">
+                    <table className="table table-striped table-dark">
                         <thead>
                             <tr>
                                 <th>Id</th>
