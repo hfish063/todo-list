@@ -10,4 +10,5 @@ public interface TaskService {
     public Task findById(Long theId);
     public Task save(Task theTask);
     public void deleteById(Long theId);
+    public void deleteAllByCompletion();
 }

@@ -42,4 +42,9 @@ public class TaskController {
     public void delete(@PathVariable("theId") Long theId) {
         taskService.deleteById(theId);
     }
+
+    @DeleteMapping("/all/complete")
+    public void deleteCompleteTasks() {
+        taskService.deleteAllByCompletion();
+    }
 }

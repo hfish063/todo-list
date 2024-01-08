@@ -77,4 +77,16 @@ public class TaskServiceImpl implements TaskService {
     public void deleteById(Long theId) {
         taskRepository.deleteById(theId);
     }
+
+    // TODO: refactoring - DRY principles
+    @Override
+    public void deleteAllByCompletion() {
+        List<Task> taskList = taskRepository.findAll();
+
+        for(Task currentTask : taskList) {
+            if (currentTask.isComplete()) {
+                taskRepository.deleteById(currentTask.getId());
+            }
+        }
+    }
 }
